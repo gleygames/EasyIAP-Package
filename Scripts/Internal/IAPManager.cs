@@ -1050,18 +1050,19 @@ namespace Gley.EasyIAP.Internal
             return false;
         }
 
-        public void BuyProduct(ShopProductNames productName, UnityAction<IAPOperationStatus, string, StoreProduct> OnCompleteMethod)
+        public void BuyProduct(ShopProductNames productName, UnityAction<IAPOperationStatus, string, StoreProduct> completeMethod)
         {
-
+            completeMethod?.Invoke(IAPOperationStatus.Fail, "Not Implemented", null);
         }
 
-        public void RestorePurchases(UnityAction<IAPOperationStatus, string, StoreProduct> OnCompleteMethod)
+        public void RestorePurchases(UnityAction<IAPOperationStatus, string, StoreProduct> completeMethod)
         {
-
+            completeMethod?.Invoke(IAPOperationStatus.Fail, "Not Implemented", null);
         }
 
-        public void RestorePurchases(UnityAction<IAPOperationStatus, string, StoreProduct> OnCompleteMethod, UnityAction RestoreDone)
+        public void RestorePurchases(UnityAction<IAPOperationStatus, string, StoreProduct> completeMethod, UnityAction restoreDone)
         {
+            completeMethod?.Invoke(IAPOperationStatus.Fail, "Not Implemented", null);
         }
 
         public int GetValue(ShopProductNames product)
@@ -1106,7 +1107,7 @@ namespace Gley.EasyIAP.Internal
 
         internal void Initialize(UnityAction<IAPOperationStatus, string, List<StoreProduct>> completeMethod)
         {
-            
+            completeMethod?.Invoke(IAPOperationStatus.Fail, "Not Implemented", null);
         }
 
         internal ProductType GetProductType(ShopProductNames product)

@@ -378,7 +378,7 @@ namespace Gley.EasyIAP.Editor
             }
             text += "\t}\n";
             text += "}";
-            File.WriteAllText(Application.dataPath + $"/{rootWithoutAssets}/Scripts/ToUse/ShopProductNames.cs", text);
+            File.WriteAllText(Application.dataPath + $"/{rootWithoutAssets}/{Internal.Constants.PRODUCT_NAMES_FILE}", text);
         }
     }
 }

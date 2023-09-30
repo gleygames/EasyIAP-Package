@@ -74,7 +74,14 @@ namespace Gley.EasyIAP.Editor
             {
                 Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_GOOGLEPLAY, false, BuildTargetGroup.Android);
 #if GleyIAPEnabled
-                UnityEditor.Purchasing.UnityPurchasingEditor.TargetAndroidStore(UnityEngine.Purchasing.AppStore.GooglePlay);
+                try
+                {
+                    UnityEditor.Purchasing.UnityPurchasingEditor.TargetAndroidStore(UnityEngine.Purchasing.AppStore.GooglePlay);
+                }
+                catch
+                {
+                    Debug.LogError("Enable In-App Purchases from Services");
+                }
 #endif
             }
             else
@@ -86,7 +93,14 @@ namespace Gley.EasyIAP.Editor
             {
                 Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_AMAZON, false, BuildTargetGroup.Android);
 #if GleyIAPEnabled
-                UnityEditor.Purchasing.UnityPurchasingEditor.TargetAndroidStore(UnityEngine.Purchasing.AppStore.AmazonAppStore);
+                try
+                {
+                    UnityEditor.Purchasing.UnityPurchasingEditor.TargetAndroidStore(UnityEngine.Purchasing.AppStore.AmazonAppStore);
+                }
+                catch
+                {
+                    Debug.LogError("Enable In-App Purchases from Services");
+                }
 #endif
             }
             else

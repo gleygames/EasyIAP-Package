@@ -448,8 +448,7 @@ namespace Gley.EasyIAP.Internal
             if (IsCurrentStoreSupportedByValidator())
             {
 #if !UNITY_EDITOR
-                var appleTangleData = m_UseAppleStoreKitTestCertificate ? AppleStoreKitTestTangle.Data() : AppleTangle.Data();
-                CrossPlatformValidator validator = new CrossPlatformValidator(GooglePlayTangle.Data(), appleTangleData, Application.identifier);
+                CrossPlatformValidator validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
 
                 try
                 {

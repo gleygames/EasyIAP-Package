@@ -78,22 +78,24 @@ namespace Gley.EasyIAP.Internal
 
         public void Initialize(UnityAction<IAPOperationStatus, string, List<StoreProduct>> initComplete)
         {
+            EasyIAPData settings = Resources.Load<EasyIAPData>(Constants.DATA_NAME_RUNTIME);
+            if (settings == null)
+            {
+                Debug.LogError("No products available -> Go to Tools->Gley->Easy IAP and define your products");
+                return;
+            }
+            shopProducts = settings.shopProducts;
+            debug = settings.debug;
+            onInitComplete = initComplete;
+            Debug.Log(UnityServices.State);
             if (UnityServices.State == ServicesInitializationState.Uninitialized)
             {
-                EasyIAPData settings = Resources.Load<EasyIAPData>(Constants.DATA_NAME_RUNTIME);
-                if (settings == null)
-                {
-                    Debug.LogError("No products available -> Go to Tools->Gley->Easy IAP and define your products");
-                    return;
-                }
-                shopProducts = settings.shopProducts;
-                debug = settings.debug;
                 if (debug)
                 {
                     Debug.Log("Unity Gaming Services Initialization Started");
                     ScreenWriter.Write("Unity Gaming Services Initialization Started");
                 }
-                onInitComplete = initComplete;
+               
                 Initialize(OnSuccess, OnError);
             }
             else

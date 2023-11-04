@@ -87,7 +87,6 @@ namespace Gley.EasyIAP.Internal
             shopProducts = settings.shopProducts;
             debug = settings.debug;
             onInitComplete = initComplete;
-            Debug.Log(UnityServices.State);
             if (UnityServices.State == ServicesInitializationState.Uninitialized)
             {
                 if (debug)

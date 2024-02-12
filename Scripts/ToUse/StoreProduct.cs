@@ -21,7 +21,7 @@ namespace Gley.EasyIAP
         public string idWindows;
         public int value;
         public string localizedPriceString = "-";
-        public int price;
+        public double price;
         public string isoCurrencyCode;
         public string receipt;
         internal string localizedDescription;

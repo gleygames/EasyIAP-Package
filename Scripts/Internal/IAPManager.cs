@@ -234,7 +234,7 @@ namespace Gley.EasyIAP.Internal
                 if (product != null && product.availableToPurchase)
                 {
                     shopProducts[i].localizedPriceString = product.metadata.localizedPriceString;
-                    shopProducts[i].price = System.Decimal.ToInt32(product.metadata.localizedPrice);
+                    shopProducts[i].price = System.Decimal.ToDouble(product.metadata.localizedPrice);
                     shopProducts[i].isoCurrencyCode = product.metadata.isoCurrencyCode;
                     shopProducts[i].localizedDescription = product.metadata.localizedDescription;
                     shopProducts[i].localizedTitle = product.metadata.localizedTitle;
@@ -720,7 +720,7 @@ namespace Gley.EasyIAP.Internal
         /// </summary>
         /// <param name="product">store product</param>
         /// <returns></returns>
-        public int GetPrice(ShopProductNames product)
+        public double GetPrice(ShopProductNames product)
         {
             if (IsInitialized())
             {

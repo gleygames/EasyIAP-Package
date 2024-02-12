@@ -113,7 +113,7 @@ namespace Gley.EasyIAP
         /// </summary>
         /// <param name="product">An enum member generated from Settings Window</param>
         /// <returns>The decimal price</returns>
-        public static int GetPrice(ShopProductNames product)
+        public static double GetPrice(ShopProductNames product)
         {
             return IAPManager.Instance.GetPrice(product);
         }

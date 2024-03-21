@@ -84,7 +84,10 @@ namespace Gley.EasyIAP.Internal
                 Debug.LogError("No products available -> Go to Tools->Gley->Easy IAP and define your products");
                 return;
             }
-            shopProducts = settings.shopProducts;
+            if (!IsInitialized())
+            {
+                shopProducts = settings.shopProducts;
+            }
             debug = settings.debug;
             onInitComplete = initComplete;
             if (UnityServices.State == ServicesInitializationState.Uninitialized)

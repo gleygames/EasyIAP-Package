@@ -16,6 +16,10 @@ namespace Gley.EasyIAP.Internal
         void Start()
         {
             Gley.EasyIAP.API.Initialize(InitializationComplete);
+            if(Gley.EasyIAP.API.IsInitialized())
+            {
+                RefreshUI();
+            }
         }
 
 

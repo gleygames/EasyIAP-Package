@@ -382,6 +382,11 @@ namespace Gley.EasyIAP.Editor
         private void CreateEnumFile()
         {
             string text =
+            "//Automatically generated\n" +
+            "#if GLEY_IAP_IOS || GLEY_IAP_GOOGLEPLAY || GLEY_IAP_AMAZON || GLEY_IAP_MACOS || GLEY_IAP_WINDOWS\n" +
+            "#define GleyIAPEnabled\n" +
+            "#endif\n" +
+            "#if GleyIAPEnabled\n" +
             "namespace Gley.EasyIAP\n" +
             "{\n" +
             "\tpublic enum ShopProductNames\n" +
@@ -391,7 +396,8 @@ namespace Gley.EasyIAP.Editor
                 text += $"\t\t{localShopProducts[i].productName},\n";
             }
             text += "\t}\n";
-            text += "}";
+            text += "}\n";
+            text += "#endif";
             File.WriteAllText(Application.dataPath + $"/{rootWithoutAssets}/{Internal.Constants.PRODUCT_NAMES_FILE}", text);
         }
     }

@@ -1125,6 +1125,11 @@ namespace Gley.EasyIAP.Internal
             completeMethod?.Invoke(IAPOperationStatus.Fail, "Not Implemented", null);
         }
 
+        internal void Initialize(UnityAction<IAPOperationStatus, string> completeMethod)
+        {
+            completeMethod?.Invoke(IAPOperationStatus.Fail, "Not Implemented");
+        }
+
         internal ProductType GetProductType(ShopProductNames product)
         {
             return default;

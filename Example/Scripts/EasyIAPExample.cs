@@ -40,22 +40,22 @@ namespace Gley.EasyIAP.Internal
         }
 
 
-        private void InitializationComplete(IAPOperationStatus status, string message, List<StoreProduct> shopProducts)
+        private void InitializationComplete(IAPOperationStatus status, string message)
         {
             if (status == IAPOperationStatus.Success)
             {
-                //IAP was successfully initialized
-                //loop through all products
-                for (int i = 0; i < shopProducts.Count; i++)
+                // IAP was successfully initialized.
+                // If remove ads was bought before, mark it as owned.
+                
+                //this should be your call
+                //if (API.IsActive(ShopProductNames.RemoveAds))
+
+                // This is just a workaround to avoid errors
+                ShopProductNames adsProduct = Gley.EasyIAP.API.ConvertNameToShopProduct("RemoveAds");
+                if(API.IsActive(adsProduct))
+                //
                 {
-                    //if remove ads was bought before, mark it as owned.
-                    if (shopProducts[i].productName == "RemoveAds")
-                    {
-                        if (shopProducts[i].active)
-                        {
-                            removeAds = true;
-                        }
-                    }
+                    removeAds = true;
                 }
             }
             else

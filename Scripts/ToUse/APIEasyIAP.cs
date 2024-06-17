@@ -24,6 +24,16 @@ namespace Gley.EasyIAP
 
 
         /// <summary>
+        /// Initialize store products. Call this method once at the beginning of your game.
+        /// </summary>
+        /// <param name="completeMethod">Callback method. Use this method for initializations</param>
+        public static void Initialize(UnityAction<IAPOperationStatus, string> completeMethod)
+        {
+            IAPManager.Instance.Initialize(completeMethod);
+        }
+
+
+        /// <summary>
         /// Checks if IAP is initialized 
         /// </summary>
         /// <returns>true if shop was already initialized</returns>

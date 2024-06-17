@@ -33,6 +33,7 @@ namespace Gley.EasyIAP.Internal
         private List<StoreProduct> shopProducts;
         private ConfigurationBuilder builder;
         private UnityAction<IAPOperationStatus, string, List<StoreProduct>> onInitComplete;
+        private UnityAction<IAPOperationStatus, string> OnInitComplete;
         private UnityAction<IAPOperationStatus, string, StoreProduct> OnCompleteMethod;
         private UnityAction RestoreDone;
 
@@ -75,6 +76,14 @@ namespace Gley.EasyIAP.Internal
         {
             return m_StoreController != null && m_StoreExtensionProvider != null;
         }
+
+
+        public void Initialize(UnityAction<IAPOperationStatus, string> initComplete)
+        {
+            OnInitComplete = initComplete;
+            Initialize((UnityAction<IAPOperationStatus, string, List<StoreProduct>>)null);
+        }
+
 
         public void Initialize(UnityAction<IAPOperationStatus, string, List<StoreProduct>> initComplete)
         {
@@ -137,7 +146,8 @@ namespace Gley.EasyIAP.Internal
                 Debug.Log(text);
                 ScreenWriter.Write(text);
             }
-            onInitComplete(IAPOperationStatus.Fail, text, null);
+            onInitComplete?.Invoke(IAPOperationStatus.Fail, text, null);
+            OnInitComplete?.Invoke(IAPOperationStatus.Fail, text);
         }
 
         /// <summary>
@@ -243,7 +253,8 @@ namespace Gley.EasyIAP.Internal
                     shopProducts[i].localizedTitle = product.metadata.localizedTitle;
                 }
             }
-            onInitComplete(IAPOperationStatus.Success, "Success", shopProducts);
+            onInitComplete?.Invoke(IAPOperationStatus.Success, "Success", shopProducts);
+            OnInitComplete?.Invoke(IAPOperationStatus.Success, "Success");
         }
 
         /// <summary>
@@ -268,7 +279,8 @@ namespace Gley.EasyIAP.Internal
                 Debug.Log(text);
                 ScreenWriter.Write(text);
             }
-            onInitComplete(IAPOperationStatus.Fail, text, null);
+            onInitComplete?.Invoke(IAPOperationStatus.Fail, text, null);
+            OnInitComplete?.Invoke(IAPOperationStatus.Fail, text);
         }
         #endregion
 

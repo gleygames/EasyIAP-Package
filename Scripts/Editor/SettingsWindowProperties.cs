@@ -16,16 +16,16 @@ namespace Gley.EasyIAP.Editor
         internal const string testScene = "Example/Scenes/EasyIAPTest.unity";
         internal const string documentation = "https://gley.gitbook.io/easy-iap/";
 
-        public string versionFilePath => "/Scripts/Version.txt";
+        public string VersionFilePath => "/Scripts/Version.txt";
 
-        public string windowName => "Easy IAP - v.";
+        public string WindowName => "Easy IAP - v.";
 
-        public int minWidth => 520;
+        public int MinWidth => 520;
 
-        public int minHeight => 520;
+        public int MinHeight => 520;
 
-        public string folderName => "EasyIAP";
+        public string FolderName => "EasyIAP";
 
-        public string parentFolder => "Gley";
+        public string ParentFolder => "Gley";
     }
 }

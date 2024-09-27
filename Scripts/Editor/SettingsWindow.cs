@@ -33,7 +33,7 @@ namespace Gley.EasyIAP.Editor
         private bool useUVS;
 
 
-        [MenuItem(SettingsWindowProperties.menuItem, false, 40)]
+        [MenuItem(SettingsWindowProperties.menuItem, false)]
         private static void Init()
         {
             WindowLoader.LoadWindow<SettingsWindow>(new SettingsWindowProperties(), out rootFolder, out rootWithoutAssets);

@@ -878,7 +878,7 @@ namespace Gley.EasyIAP.Internal
             {
                 return info.isSubscribed();
             }
-            return default;
+            return Result.Unsupported;
         }
 
         public Result IsExpired(ShopProductNames product)
@@ -888,7 +888,7 @@ namespace Gley.EasyIAP.Internal
             {
                 return info.isExpired();
             }
-            return default;
+            return Result.Unsupported;
         }
 
         public Result IsCancelled(ShopProductNames product)
@@ -898,7 +898,7 @@ namespace Gley.EasyIAP.Internal
             {
                 return info.isCancelled();
             }
-            return default;
+            return Result.Unsupported;
         }
 
         public Result IsFreeTrial(ShopProductNames product)
@@ -908,7 +908,7 @@ namespace Gley.EasyIAP.Internal
             {
                 return info.isFreeTrial();
             }
-            return default;
+            return Result.Unsupported;
         }
 
         public Result IsAutoRenewing(ShopProductNames product)
@@ -918,7 +918,7 @@ namespace Gley.EasyIAP.Internal
             {
                 return info.isAutoRenewing();
             }
-            return default;
+            return Result.Unsupported;
         }
 
         public TimeSpan GetRemainingTime(ShopProductNames product)
@@ -938,7 +938,7 @@ namespace Gley.EasyIAP.Internal
             {
                 return info.isIntroductoryPricePeriod();
             }
-            return default;
+            return Result.Unsupported;
         }
 
         public TimeSpan GetIntroductoryPricePeriod(ShopProductNames product)

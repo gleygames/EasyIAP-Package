@@ -2,9 +2,8 @@
 #define GleyIAPEnabled
 #endif
 
-using Gley.Common;
+using Gley.Common.Editor;
 using Gley.EasyIAP.Internal;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -36,7 +35,7 @@ namespace Gley.EasyIAP.Editor
         [MenuItem(SettingsWindowProperties.menuItem, false)]
         private static void Init()
         {
-            WindowLoader.LoadWindow<SettingsWindow>(new SettingsWindowProperties(), out rootFolder, out rootWithoutAssets);
+            WindowLoader.LoadWindow<SettingsWindow>(new SettingsWindowProperties(), new Version(), out rootFolder, out rootWithoutAssets);
         }
 
 
@@ -72,7 +71,7 @@ namespace Gley.EasyIAP.Editor
         {
             if (useForGooglePlay)
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_GOOGLEPLAY, false, BuildTargetGroup.Android);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_GOOGLEPLAY, false, BuildTargetGroup.Android);
 #if GleyIAPEnabled
                 try
                 {
@@ -86,12 +85,12 @@ namespace Gley.EasyIAP.Editor
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_GOOGLEPLAY, true, BuildTargetGroup.Android);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_GOOGLEPLAY, true, BuildTargetGroup.Android);
             }
 
             if (useForAmazon)
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_AMAZON, false, BuildTargetGroup.Android);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_AMAZON, false, BuildTargetGroup.Android);
 #if GleyIAPEnabled
                 try
                 {
@@ -105,64 +104,64 @@ namespace Gley.EasyIAP.Editor
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_AMAZON, true, BuildTargetGroup.Android);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_AMAZON, true, BuildTargetGroup.Android);
             }
 
             if (useForIos)
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_IOS, false, BuildTargetGroup.iOS);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_IOS, false, BuildTargetGroup.iOS);
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_IOS, true, BuildTargetGroup.iOS);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_IOS, true, BuildTargetGroup.iOS);
             }
 
             if (useForMac)
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_MACOS, false, BuildTargetGroup.Standalone);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_MACOS, false, BuildTargetGroup.Standalone);
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_MACOS, true, BuildTargetGroup.Standalone);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_MACOS, true, BuildTargetGroup.Standalone);
             }
 
             if (useForWindows)
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_WINDOWS, false, BuildTargetGroup.WSA);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_WINDOWS, false, BuildTargetGroup.WSA);
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_WINDOWS, true, BuildTargetGroup.WSA);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_WINDOWS, true, BuildTargetGroup.WSA);
             }
 
 
             if (useReceiptValidation)
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, false, BuildTargetGroup.Android);
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, false, BuildTargetGroup.iOS);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, false, BuildTargetGroup.Android);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, false, BuildTargetGroup.iOS);
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, true, BuildTargetGroup.Android);
-                Gley.Common.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, true, BuildTargetGroup.iOS);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, true, BuildTargetGroup.Android);
+                Gley.Common.Editor.PreprocessorDirective.AddToPlatform(SettingsWindowProperties.GLEY_IAP_VALIDATION, true, BuildTargetGroup.iOS);
             }
 
             if (usePlaymaker)
             {
-                Gley.Common.PreprocessorDirective.AddToCurrent(Gley.Common.Constants.GLEY_PLAYMAKER_SUPPORT, false);
+                Gley.Common.Editor.PreprocessorDirective.AddToCurrent(Gley.Common.Editor.Constants.GLEY_PLAYMAKER_SUPPORT, false);
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToCurrent(Gley.Common.Constants.GLEY_PLAYMAKER_SUPPORT, true);
+                Gley.Common.Editor.PreprocessorDirective.AddToCurrent(Gley.Common.Editor.Constants.GLEY_PLAYMAKER_SUPPORT, true);
             }
 
             if (useUVS)
             {
-                Gley.Common.PreprocessorDirective.AddToCurrent(Gley.Common.Constants.GLEY_UVS_SUPPORT, false);
+                Gley.Common.Editor.PreprocessorDirective.AddToCurrent(Gley.Common.Editor.Constants.GLEY_UVS_SUPPORT, false);
             }
             else
             {
-                Gley.Common.PreprocessorDirective.AddToCurrent(Gley.Common.Constants.GLEY_UVS_SUPPORT, true);
+                Gley.Common.Editor.PreprocessorDirective.AddToCurrent(Gley.Common.Editor.Constants.GLEY_UVS_SUPPORT, true);
             }
 
             easyIAPData.debug = debug;
@@ -222,7 +221,7 @@ namespace Gley.EasyIAP.Editor
 
             if (GUILayout.Button("Import Unity IAP SDK"))
             {
-                Gley.Common.ImportRequiredPackages.ImportPackage("com.unity.purchasing", CompleteMethod);
+                Gley.Common.Editor.ImportRequiredPackages.ImportPackage("com.unity.purchasing", CompleteMethod);
             }
             EditorGUILayout.Space();
 
@@ -324,7 +323,7 @@ namespace Gley.EasyIAP.Editor
         {
             for (int i = 0; i < localShopProducts.Count; i++)
             {
-                if (String.IsNullOrEmpty(localShopProducts[i].productName))
+                if (System.String.IsNullOrEmpty(localShopProducts[i].productName))
                 {
                     errorText = "Product name cannot be empty! Please fill all of them";
                     return true;
@@ -332,7 +331,7 @@ namespace Gley.EasyIAP.Editor
 
                 if (useForGooglePlay)
                 {
-                    if (String.IsNullOrEmpty(localShopProducts[i].idGooglePlay))
+                    if (System.String.IsNullOrEmpty(localShopProducts[i].idGooglePlay))
                     {
                         errorText = "Google Play ID cannot be empty! Please fill all of them";
                         return true;
@@ -341,7 +340,7 @@ namespace Gley.EasyIAP.Editor
 
                 if (useForAmazon)
                 {
-                    if (String.IsNullOrEmpty(localShopProducts[i].idAmazon))
+                    if (System.String.IsNullOrEmpty(localShopProducts[i].idAmazon))
                     {
                         errorText = "Amazon SKU cannot be empty! Please fill all of them";
                         return true;
@@ -350,7 +349,7 @@ namespace Gley.EasyIAP.Editor
 
                 if (useForIos)
                 {
-                    if (String.IsNullOrEmpty(localShopProducts[i].idIOS))
+                    if (System.String.IsNullOrEmpty(localShopProducts[i].idIOS))
                     {
                         errorText = "App Store ID cannot be empty! Please fill all of them";
                         return true;
@@ -359,7 +358,7 @@ namespace Gley.EasyIAP.Editor
 
                 if (useForMac)
                 {
-                    if (String.IsNullOrEmpty(localShopProducts[i].idMac))
+                    if (System.String.IsNullOrEmpty(localShopProducts[i].idMac))
                     {
                         errorText = "Mac Store ID cannot be empty! Please fill all of them";
                         return true;
@@ -368,7 +367,7 @@ namespace Gley.EasyIAP.Editor
 
                 if (useForWindows)
                 {
-                    if (String.IsNullOrEmpty(localShopProducts[i].idWindows))
+                    if (System.String.IsNullOrEmpty(localShopProducts[i].idWindows))
                     {
                         errorText = "Windows Store ID cannot be empty! Please fill all of them";
                         return true;

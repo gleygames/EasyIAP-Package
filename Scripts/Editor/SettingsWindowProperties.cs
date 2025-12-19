@@ -1,4 +1,4 @@
-using Gley.Common;
+using Gley.Common.Editor;
 
 namespace Gley.EasyIAP.Editor
 {
